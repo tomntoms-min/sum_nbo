@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
         if(!first) {
             printf(" + ");
         }
-        // 10진수&16진수 출력
+        // Decimal and hexadecimal outputs
         printf("%u(0x%04x)", number, number);
         total += number;
         first = 0;
