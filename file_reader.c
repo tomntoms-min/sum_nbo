@@ -20,7 +20,7 @@ uint32_t read_network_number(const char *filename) {
 
     uint32_t num;
     if (fread(&num, sizeof(uint32_t), 1, file) != 1) {
-        fprintf(stderr, "file read fail.\n", filename);
+        fprintf(stderr, "file read fail: %s\n", filename);
         fclose(file);
         exit(EXIT_FAILURE);
     }
