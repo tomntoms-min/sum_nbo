@@ -1,17 +1,15 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -std=c99
-TARGET = sum_nbo
+#Makefile
+all: sum-nbo
 
-all: $(TARGET)
+sum-nbo: main.o file_reader.o
+	g++ -o sum-nbo main.o file_reader.o
 
-$(TARGET): main.o file_reader.o
-	$(CC) $(CFLAGS) -o $(TARGET) main.o file_reader.o
+main.o: file_reader.h main.c
+	g++ -c -o main.o main.c
 
-main.o: main.c file_reader.h
-	$(CC) $(CFLAGS) -c main.c
-
-file_reader.o: file_reader.c file_reader.h
-	$(CC) $(CFLAGS) -c file_reader.c
+file_reader.o: file_reader.h file_reader.c
+	g++ -c -o file_reader.o file_reader.c
 
 clean:
-	rm -f $(TARGET) *.o
+	rm -f sum-nbo
+	rm -f *.o
